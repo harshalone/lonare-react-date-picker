@@ -1,5 +1,5 @@
-import { useState } from 'react';  
-import { CalendarIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import * as React from 'react'; 
+import { useState } from 'react';   
 
 function DatePicker({
   default_date,
@@ -87,8 +87,7 @@ function DatePicker({
       <button
         className='border-2 border-gray-300 px-3 py-1 rounded-md flex flex-row gap-1 items-center'
         onClick={showDatePickerHandler}
-      >
-        <CalendarIcon className="h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
+      > 
         <span className='text-gray-900 text-sm'>Select Date</span>
       </button>
 
@@ -101,7 +100,7 @@ function DatePicker({
                 onClick={() => setShowDatePicker(false)}
                 className='p-2 border-2 border-gray-300 bg-black text-white rounded-md hover:bg-gray-700'
               >
-                <XMarkIcon className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
+                <span>&#x2715;</span>
               </button>
             </div>
 

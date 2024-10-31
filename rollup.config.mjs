@@ -41,5 +41,5 @@ export default {
       extensions: ['.js', '.jsx']
     })
   ],
-  external: ['react', 'react-dom', '@heroicons/react/20/solid']
+  external: ['react', 'react-dom']
 }; 
