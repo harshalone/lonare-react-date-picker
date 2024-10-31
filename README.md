@@ -8,6 +8,8 @@ A modern, customizable date picker component for React applications, built with 
 
 ![Bundle Size](https://img.shields.io/bundlephobia/min/lonare-react-date-picker)
 
+[![Alt text]('/src/images/1.gif')](https://www.oddcircles.com)
+
 ## Features
 
 - 📅 Clean and intuitive interface
@@ -62,6 +64,8 @@ function App() {
   );
 }
 ```
+
+[![Alt text]('/src/images/2.png')](https://www.oddcircles.com)
 
 ## Props
 
