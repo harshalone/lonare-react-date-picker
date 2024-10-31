@@ -1,6 +1,6 @@
 {
   "name": "lonare-react-date-picker",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "A simple React DatePicker component with Tailwind CSS",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
