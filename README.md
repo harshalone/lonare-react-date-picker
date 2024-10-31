@@ -8,7 +8,7 @@ A modern, customizable date picker component for React applications, built with 
 
 ![Bundle Size](https://img.shields.io/bundlephobia/min/lonare-react-date-picker)
 
-![Demo GIF](src/images/1.gif)
+![Demo GIF](https://raw.githubusercontent.com/harshalone/lonare-react-date-picker/main/src/images/1.gif)
 
 ## Features
 
@@ -65,7 +65,7 @@ function App() {
 }
 ```
 
-![Screenshot](src/images/2.png)
+![Screenshot](https://raw.githubusercontent.com/harshalone/lonare-react-date-picker/main/src/images/2.png)
 
 ## Props
 

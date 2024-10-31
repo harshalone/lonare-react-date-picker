@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "files": [
-    "dist"
+    "dist",
+    "src/images",
+    "README.md"
   ],
   "keywords": [
     "react",
