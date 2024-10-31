@@ -98,7 +98,7 @@ function DatePicker({
             <div className="flex justify-end">
               <button
                 onClick={() => setShowDatePicker(false)}
-                className='p-2 border-2 border-gray-300 bg-black text-white rounded-md hover:bg-gray-700'
+                className='px-3 py-1 border-2 border-gray-300 bg-black text-white rounded-md hover:bg-gray-700'
               >
                 <span>&#x2715;</span>
               </button>
@@ -222,7 +222,7 @@ function DatePicker({
                     setShowDatePicker(false);
                     if (setDate) setDate(new Date(selectedYear, selectedMonth, selectedDate));
                   }}
-                  className='p-2 mt-4 border-2 border-gray-300 bg-black text-white rounded-md hover:bg-gray-700'
+                  className='w-full p-2 mt-4 border-2 border-gray-300 bg-black text-white rounded-md hover:bg-gray-700'
                 >
                   Done
                 </button>
