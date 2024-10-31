@@ -1,17 +1,24 @@
 import * as React from 'react'; 
 import { useState } from 'react';   
 
+
+const parseDate = (dateString) => {
+  const [day, month, year] = dateString.split('-').map(Number);
+  return new Date(year, month - 1, day);  
+};
+
 function DatePicker({
   default_date,
   align = 'left',
   defaultYear,
   defaultMonth,
   setDate,
+  dateFormat = 'DD-MM-YYYY',
   dateFuture,
   datePast,
   dateRangeStart,
   dateRangeEnd,
-  yearRange = { before: 0, after: 5 },  
+  yearRange = { before: 0, after: 5 }, // Default: current year + 5 years ahead
 }) {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [selectedYear, setSelectedYear] = useState(defaultYear || null);
@@ -36,8 +43,9 @@ function DatePicker({
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const rangeStart = dateRangeStart ? new Date(dateRangeStart) : null;
-  const rangeEnd = dateRangeEnd ? new Date(dateRangeEnd) : null;
+  // Parse rangeStart and rangeEnd dates
+  const rangeStart = dateRangeStart ? parseDate(dateRangeStart) : null;
+  const rangeEnd = dateRangeEnd ? parseDate(dateRangeEnd) : null;
 
   const isYearDisabled = (year) => {
     if (dateFuture && year < today.getFullYear()) return true;
@@ -82,6 +90,29 @@ function DatePicker({
     setShowDatePicker(true);
   };
 
+  const set_date = () => {
+    if (selectedYear && selectedMonth !== null && selectedDate) {
+      let date;
+  
+      if (dateFormat === 'YYYY-MM-DD') {
+        date = `${selectedYear}-${String(selectedMonth + 1).padStart(2, '0')}-${String(selectedDate).padStart(2, '0')}`;
+      } else if (dateFormat === 'DD-MM-YYYY') {
+        date = `${String(selectedDate).padStart(2, '0')}-${String(selectedMonth + 1).padStart(2, '0')}-${selectedYear}`;
+      } else if (dateFormat === 'MM-DD-YYYY') {
+        date = `${String(selectedMonth + 1).padStart(2, '0')}-${String(selectedDate).padStart(2, '0')}-${selectedYear}`;
+      } else {
+        // Default format if an unrecognised format is provided
+        date = new Date(selectedYear, selectedMonth, selectedDate).toLocaleDateString();
+      }
+  
+      if (setDate) {
+        setDate(date);
+      }
+  
+      setShowDatePicker(false);
+    }
+  };
+
   return (
     <div className="relative inline-block">
       <button
@@ -98,7 +129,7 @@ function DatePicker({
             <div className="flex justify-end">
               <button
                 onClick={() => setShowDatePicker(false)}
-                className='px-3 py-1 border-2 border-gray-300 bg-black text-white rounded-md hover:bg-gray-700'
+                className='p-2 border-2 border-gray-300 bg-black text-white rounded-md hover:bg-gray-700'
               >
                 <span>&#x2715;</span>
               </button>
@@ -220,9 +251,9 @@ function DatePicker({
                 <button
                   onClick={() => {
                     setShowDatePicker(false);
-                    if (setDate) setDate(new Date(selectedYear, selectedMonth, selectedDate));
+                    if (setDate) set_date();
                   }}
-                  className='w-full p-2 mt-4 border-2 border-gray-300 bg-black text-white rounded-md hover:bg-gray-700'
+                  className='p-2 mt-4 border-2 border-gray-300 w-full bg-black text-white rounded-md hover:bg-gray-700'
                 >
                   Done
                 </button>
